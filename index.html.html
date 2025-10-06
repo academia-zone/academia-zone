@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Academia Zone</title>
+  <style>
+    :root{
+      --blue:#0b6efd;
+      --navy:#024ea2;
+      --bg:#f8fbff;
+      --muted:#6b7280;
+      --card:#ffffff;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#0b2540}
+    header{background:linear-gradient(90deg,var(--blue),var(--navy));color:#fff;padding:22px 18px}
+    .container{max-width:1100px;margin:18px auto;padding:0 16px}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:10px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-weight:700}
+    nav{margin-top:8px}
+    nav a{color:rgba(255,255,255,0.95);text-decoration:none;margin-right:14px;font-weight:600}
+
+    .hero{display:flex;gap:20px;align-items:center;justify-content:space-between;padding:32px 0}
+    .hero-left{max-width:640px}
+    .tag{background:rgba(255,255,255,0.12);display:inline-block;padding:6px 10px;border-radius:8px;font-weight:600;margin-bottom:12px}
+    h1{margin:0 0 10px 0;font-size:32px}
+    p.lead{margin:0;color:var(--muted);line-height:1.5}
+    .cta{margin-top:16px}
+    .btn{background:#fff;color:var(--navy);padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;margin-right:8px;display:inline-block}
+    .btn-outline{background:transparent;border:2px solid rgba(255,255,255,0.18);color:#fff}
+
+    .hero-right{min-width:220px}
+    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(8,20,40,0.06)}
+
+    /* Subjects grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:22px}
+    .subject{background:linear-gradient(180deg,#fff, #f3f7ff);padding:14px;border-radius:10px;display:flex;flex-direction:column;gap:8px}
+    .subject h3{margin:0;font-size:16px}
+    .subject p{margin:0;color:var(--muted);font-size:13px}
+
+    /* Notes list */
+    .notes{margin-top:18px;display:grid;gap:10px}
+    .note{display:flex;justify-content:space-between;align-items:center;padding:12px;background:#fff;border-radius:10px}
+    .note .meta{color:var(--muted);font-size:13px}
+    .download{background:var(--blue);color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:600}
+
+    footer{padding:24px 0;color:var(--muted);text-align:center}
+
+    /* responsive */
+    @media (max-width:720px){
+      .hero{flex-direction:column;align-items:flex-start}
+      .brand{gap:10px}
+      .logo{width:46px;height:46px}
+      h1{font-size:24px}
+    }
+
+    /* small form */
+    .small{font-size:13px}
+    .search{display:flex;gap:8px}
+    input[type=text]{padding:8px 12px;border-radius:8px;border:1px solid #dbe7ff;flex:1}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef6ff;color:var(--blue);font-weight:700}
+
+    /* top nav links active */
+    .navlink{cursor:pointer}
+    .hidden{display:none}
+    .urdu{font-family: 'Noto Nastaliq Urdu', 'Noto Sans', serif}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <div class="logo">AZ</div>
+        <div>
+          <div style="font-weight:800">Academia Zone <span class="pill">Free</span></div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.85)">Your Digital Study Companion | <span class="urdu">آپ کا مطالعہ ساتھی</span></div>
+        </div>
+      </div>
+      <nav style="margin-top:12px">
+        <a class="navlink" data-page="home">Home</a>
+        <a class="navlink" data-page="subjects">Subjects</a>
+        <a class="navlink" data-page="notes">Notes</a>
+        <a class="navlink" data-page="about">About</a>
+        <a class="navlink" data-page="contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HOME -->
+    <section id="home">
+      <div class="hero">
+        <div class="hero-left">
+          <div class="tag">Academia Zone • Free Study Notes</div>
+          <h1>Find, Share, and Download Notes — For Every Student</h1>
+          <p class="lead">A simple place to keep useful study files. Search subjects, open notes, and download PDF files easily. آسان طریقہ طلبہ کے لیے مطالعہ حاصل کرنے کا۔</p>
+          <div class="cta">
+            <a class="btn" data-page="subjects">Explore Subjects</a>
+            <a class="btn btn-outline" href="#notes">Latest Notes</a>
+          </div>
+
+          <div style="margin-top:18px">
+            <div style="font-weight:700;margin-bottom:8px">Quick search</div>
+            <div class="search">
+              <input id="q" type="text" placeholder="Search subject or chapter (e.g. PHY101 motion)" />
+              <a class="btn" id="searchBtn">Search</a>
+            </div>
+            <div id="searchHint" class="small" style="margin-top:8px;color:var(--muted)">Tip: Type subject code like PHY101 or MTH101.</div>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="card">
+            <h4 style="margin:0 0 8px 0">Popular Subjects</h4>
+            <div class="grid" style="margin-top:8px">
+              <div class="subject"><h3>PHY101</h3><p>Physics — بنیادی تصورات</p></div>
+              <div class="subject"><h3>MTH101</h3><p>Calculus — Integration</p></div>
+              <div class="subject"><h3>CS101</h3><p>Intro to Computing</p></div>
+              <div class="subject"><h3>ENG101</h3><p>English Comprehension</p></div>
+            </div>
+          </div>
+          <div style="height:12px"></div>
+          <div class="card small"><strong>Share notes</strong>
+            <p class="small" style="margin:8px 0 0 0;color:var(--muted)">Got notes? Add a Google Drive link in the Notes page — پھر ہم سب فائدہ اٹھائیں گے۔</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUBJECTS -->
+    <section id="subjects" class="hidden">
+      <h2>Subjects | مضامین</h2>
+      <p class="small" style="color:var(--muted)">Choose a subject to view available notes and past papers.</p>
+      <div class="grid" style="margin-top:12px">
+        <!-- sample subject cards -->
+        <div class="subject"><h3>PHY101</h3><p>Physics — Mechanics, Waves</p><a class="small" style="margin-top:8px;display:inline-block;color:var(--blue);cursor:pointer" data-open="PHY101">Open</a></div>
+        <div class="subject"><h3>MTH101</h3><p>Calculus & Series</p><a class="small" style="margin-top:8px;display:inline-block;color:var(--blue);cursor:pointer" data-open="MTH101">Open</a></div>
+        <div class="subject"><h3>ENG101</h3><p>Comprehension & Essays</p><a class="small" style="margin-top:8px;display:inline-block;color:var(--blue);cursor:pointer" data-open="ENG101">Open</a></div>
+        <div class="subject"><h3>CS101</h3><p>Intro to Computing</p><a class="small" style="margin-top:8px;display:inline-block;color:var(--blue);cursor:pointer" data-open="CS101">Open</a></div>
+        <div class="subject"><h3>ISL202</h3><p>Islamic Studies</p><a class="small" style="margin-top:8px;display:inline-block;color:var(--blue);cursor:pointer" data-open="ISL202">Open</a></div>
+        <div class="subject"><h3>PAK301</h3><p>Pakistan Studies</p><a class="small" style="margin-top:8px;display:inline-block;color:var(--blue);cursor:pointer" data-open="PAK301">Open</a></div>
+      </div>
+    </section>
+
+    <!-- NOTES -->
+    <section id="notes" class="hidden">
+      <h2>Notes & Past Papers</h2>
+      <p class="small" style="color:var(--muted)">Each file uses a Google Drive link. You can add your own link below to share with others.</p>
+
+      <div style="margin-top:14px">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <strong>PHY101 — Chapter: Motion</strong>
+              <div class="meta">Uploaded: Aug 20, 2025 • Size: 420 KB</div>
+            </div>
+            <div>
+              <a class="download" href="#" onclick="openLink('https://drive.google.com')">Download</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <strong>MTH101 — Integration Notes</strong>
+              <div class="meta">Uploaded: Sep 1, 2025 • Size: 1.1 MB</div>
+            </div>
+            <div>
+              <a class="download" href="#" onclick="openLink('https://drive.google.com')">Download</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add new note form (simple) -->
+        <div style="margin-top:16px" class="card">
+          <strong>Add a note (share link)</strong>
+          <p class="small" style="color:var(--muted);margin-top:8px">Paste a public Google Drive link to share with others. Example: https://drive.google.com/file/d/FILEID/view?usp=sharing</p>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <input id="newTitle" type="text" placeholder="Title (e.g. PHY101 - Chapter 3)" />
+            <input id="newLink" type="text" placeholder="Google Drive share link" style="flex:1" />
+            <a class="btn" id="addNote">Share</a>
+          </div>
+          <div id="addMsg" class="small" style="margin-top:8px;color:var(--muted)"></div>
+        </div>
+
+        <div id="sharedList" style="margin-top:12px"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="hidden">
+      <h2>About Academia Zone</h2>
+      <p class="small" style="color:var(--muted)">Academia Zone is a free educational portal made to help students access quality study material easily. ہمارا مقصد طلبہ کے لیے علم کو آسان اور قابلِ رسائی بنانا ہے۔</p>
+      <div style="margin-top:12px" class="card">
+        <h4>How it works</h4>
+        <ol>
+          <li>Upload your notes to Google Drive (set sharing to "Anyone with link can view")</li>
+          <li>Paste the link in the Notes page and click Share</li>
+          <li>Others can download from that shared link</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="hidden">
+      <h2>Contact</h2>
+      <p class="small" style="color:var(--muted)">Have files to share or suggestions? Email: <strong>academia.zone.contact@gmail.com</strong></p>
+      <div style="margin-top:12px" class="card">
+        <h4>Note for students</h4>
+        <p class="small" style="color:var(--muted)">Please don't upload copyrighted textbooks. صرف نوٹس اور اپنے تیار کردہ مواد شیئر کریں۔</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">© Academia Zone — Free student portal • Made with care. سوال ہو تو یہاں پوچھیں۔</div>
+  </footer>
+
+  <script>
+    // simple page switcher
+    const links = document.querySelectorAll('.navlink, .btn[data-page]');
+    links.forEach(l=>l.addEventListener('click', e=>{
+      const page = e.target.dataset.page || e.target.getAttribute('data-page');
+      if(page) showPage(page);
+    }))
+    function showPage(name){
+      ['home','subjects','notes','about','contact'].forEach(p=>{
+        const el = document.getElementById(p);
+        if(!el) return;
+        if(p===name) el.classList.remove('hidden'); else el.classList.add('hidden');
+      })
+      // scroll to top
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    // default
+    showPage('home');
+
+    document.getElementById('searchBtn').addEventListener('click', ()=>{
+      const q = document.getElementById('q').value.trim().toLowerCase();
+      if(!q) return alert('Please type something to search.');
+      // very simple search behavior: if q contains a subject code, open notes
+      if(q.includes('phy')||q.includes('mth')||q.includes('cs')||q.includes('eng')){
+        showPage('subjects');
+        alert('Opened Subjects. Click the subject card to view notes.');
+      } else {
+        showPage('notes');
+        alert('Showing notes. Use page to find downloads.');
+      }
+    })
+
+    function openLink(u){
+      window.open(u, '_blank');
+    }
+
+    // add shared note to list (client-side only)
+    const addBtn = document.getElementById('addNote');
+    addBtn.addEventListener('click', ()=>{
+      const title = document.getElementById('newTitle').value.trim();
+      const link = document.getElementById('newLink').value.trim();
+      const msg = document.getElementById('addMsg');
+      if(!title || !link){ msg.textContent = 'Please add both title and link.'; return; }
+      // basic validation for google drive
+      if(!link.includes('drive.google.com')){ msg.textContent='Please use a Google Drive share link.'; return; }
+      const list = document.getElementById('sharedList');
+      const entry = document.createElement('div');
+      entry.className = 'note';
+      entry.innerHTML = `<div><strong>${escapeHtml(title)}</strong><div class="meta">Shared just now</div></div><div><a class="download" href="${escapeHtml(link)}" target="_blank">Open</a></div>`;
+      list.prepend(entry);
+      msg.textContent = 'Note shared successfully. Everyone can now open the link.';
+      document.getElementById('newTitle').value=''; document.getElementById('newLink').value='';
+    })
+
+    function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+    // subject open handler (demo)
+    document.querySelectorAll('[data-open]').forEach(el=>el.addEventListener('click', e=>{
+      const subj = e.target.dataset.open;
+      showPage('notes');
+      alert('Opening notes for '+subj+'. Scroll to find relevant files or add your own.');
+    }))
+  </script>
+</body>
+</html>
