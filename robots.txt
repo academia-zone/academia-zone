@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://academia-zone.github.io/academia-zone/sitemap.xml
